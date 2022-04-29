@@ -99,6 +99,7 @@ public class Menu {
     }
 
     public void joinGame() {
+        //TODO: PROMPT FOR GAME CODE
         JoinerLobby jl = new JoinerLobby();
         jl.show();
         menuFrame.dispose();
