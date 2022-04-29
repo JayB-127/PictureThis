@@ -93,18 +93,19 @@ public class Menu {
     }
 
     public void createGame() {
-        //TODO: show creatorLobbyFrame
+        CreatorLobby cl = new CreatorLobby();
+        cl.show();
         menuFrame.dispose();
     }
 
     public void joinGame() {
-        //TODO: show joinerLobbyFrame
+        JoinerLobby jl = new JoinerLobby();
+        jl.show();
         menuFrame.dispose();
     }
 
     public Integer fromLeft(JComponent component) {
         Integer fromLeft = 640 - component.getWidth() / 2; //calculates how far along the component should be
-        System.out.println(fromLeft);
         return fromLeft;
     }
 
