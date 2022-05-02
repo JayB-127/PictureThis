@@ -10,6 +10,11 @@ import java.awt.Dimension;
 
 import java.awt.Font;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Menu {
     
     JFrame menuFrame = new JFrame("Main Menu");
@@ -41,7 +46,6 @@ public class Menu {
         int newFontSize = (int)(labelFont.getSize() * widthRatio);
         int componentHeight = titleLbl.getHeight();
         int fontSizeToUse = Math.min(newFontSize, componentHeight);
-        System.out.println(fontSizeToUse);
         titleLbl.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
         //-----
         content.add(titleLbl);
@@ -103,7 +107,8 @@ public class Menu {
         String gameCode = (String) JOptionPane.showInputDialog(
             menuFrame,
             "Enter a valid game code to join a game:",
-            "Enter A Game Code", 0,
+            "Enter A Game Code",
+            JOptionPane.PLAIN_MESSAGE,
             null,
             null,
             ""
@@ -115,11 +120,48 @@ public class Menu {
             //'OK' option
 
             if (gameCode.length() == 5 && gameCode.matches("^[A-Z0-9]*$")) {
-                System.out.println("valid");
-                //TODO: read file and check code against file contents, output error explaining code does not match exisisting codes
+                Boolean found = false;
+
+                try {
+                    FileReader freader = new FileReader("D:\\GitHub Repos\\Menu-Interface-Test\\codes.txt");
+                    BufferedReader breader = new BufferedReader(freader);
+
+                    String line = null;
+                    while ((line = breader.readLine()) != null) {
+                        if (line.trim().equals(gameCode.trim())) {
+                            found = true;
+                        }
+                    }
+
+                    breader.close();
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (found == true) {
+                    JoinerLobby jl = new JoinerLobby();
+                    jl.show();
+                    menuFrame.dispose();
+                    //TODO: player connected to game thread on server
+                } else {
+                    JOptionPane.showMessageDialog(
+                        menuFrame,
+                        "The game code entered does not match an existing game code.\nPlease enter a game code of an current game.",
+                        "ERROR: Game code does not exist",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                }
+
             } else {
-                System.out.println("invalid");
-                //TODO: output error explaining code is invalid format
+                JOptionPane.showMessageDialog(
+                    menuFrame,
+                    "The game code entered is not in the correct format.\nPlease enter a game code of a valid format.",
+                    "ERROR: Invalid game code",
+                    JOptionPane.ERROR_MESSAGE
+                );
             }
         }
     }
