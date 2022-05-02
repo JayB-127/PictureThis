@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 
 import java.awt.Container;
 import java.awt.Insets;
-import java.awt.Dimension;
 
 import java.awt.Font;
 
@@ -31,7 +30,6 @@ public class Menu {
         content.setLayout(null);
 
         Insets insets = content.getInsets();
-        Dimension size;
 
 
         //TITLE LABEL
@@ -40,8 +38,7 @@ public class Menu {
         titleLbl.setFont(titleLbl.getFont().deriveFont(Font.PLAIN, 110f));
         content.add(titleLbl);
 
-        size = titleLbl.getSize();
-        titleLbl.setBounds(fromLeft(titleLbl) + insets.left, 70 + insets.top, size.width, size.height);
+        titleLbl.setBounds(fromLeft(titleLbl) + insets.left, 70 + insets.top, titleLbl.getWidth(), titleLbl.getHeight());
 
 
         //CREATE GAME BUTTON
@@ -52,8 +49,7 @@ public class Menu {
         });
         content.add(createGameBtn);
 
-        size = createGameBtn.getSize();
-        createGameBtn.setBounds(fromLeft(createGameBtn) + insets.left, 300 + insets.top, size.width, size.height);
+        createGameBtn.setBounds(fromLeft(createGameBtn) + insets.left, 300 + insets.top, createGameBtn.getWidth(), createGameBtn.getHeight());
 
 
         //JOIN GAME BUTTON
@@ -64,8 +60,7 @@ public class Menu {
         });
         content.add(joinGameBtn);
 
-        size = joinGameBtn.getSize();
-        joinGameBtn.setBounds(fromLeft(joinGameBtn) + insets.left, 370 + insets.top, size.width, size.height);
+        joinGameBtn.setBounds(fromLeft(joinGameBtn) + insets.left, 370 + insets.top, joinGameBtn.getWidth(), joinGameBtn.getHeight());
 
 
         //QUIT GAME BUTTON
@@ -76,8 +71,7 @@ public class Menu {
         });
         content.add(quitGameBtn);
 
-        size = quitGameBtn.getSize();
-        quitGameBtn.setBounds(fromLeft(quitGameBtn) + insets.left, 440 + insets.top, size.width, size.height);
+        quitGameBtn.setBounds(fromLeft(quitGameBtn) + insets.left, 440 + insets.top, quitGameBtn.getWidth(), quitGameBtn.getHeight());
 
 
         menuFrame.setSize(1280, 720);
