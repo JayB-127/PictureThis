@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Container;
 import java.awt.Insets;
@@ -31,7 +32,7 @@ public class Menu {
         //TITLE LABEL
         titleLbl = new JLabel("Picture This!", JLabel.CENTER);
         titleLbl.setSize(700, 200);
-        //Code block below determines max size of text in label depending on size of label -----
+        //Finds max font size that fits in label size -----
         Font labelFont = titleLbl.getFont();
         String labelText = titleLbl.getText();
         int stringWidth = titleLbl.getFontMetrics(labelFont).stringWidth(labelText);
@@ -40,6 +41,7 @@ public class Menu {
         int newFontSize = (int)(labelFont.getSize() * widthRatio);
         int componentHeight = titleLbl.getHeight();
         int fontSizeToUse = Math.min(newFontSize, componentHeight);
+        System.out.println(fontSizeToUse);
         titleLbl.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
         //-----
         content.add(titleLbl);
@@ -84,7 +86,6 @@ public class Menu {
         quitGameBtn.setBounds(fromLeft(quitGameBtn) + insets.left, 440 + insets.top, size.width, size.height);
 
 
-
         menuFrame.setSize(1280, 720);
         menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuFrame.setVisible(true);
@@ -99,14 +100,33 @@ public class Menu {
     }
 
     public void joinGame() {
-        //TODO: PROMPT FOR GAME CODE
-        JoinerLobby jl = new JoinerLobby();
-        jl.show();
-        menuFrame.dispose();
+        String gameCode = (String) JOptionPane.showInputDialog(
+            menuFrame,
+            "Enter a valid game code to join a game:",
+            "Enter A Game Code", 0,
+            null,
+            null,
+            ""
+        );
+        
+        if (gameCode == null) {
+            //'CANCEL' option
+        } else {
+            //'OK' option
+
+            if (gameCode.length() == 5 && gameCode.matches("^[A-Z0-9]*$")) {
+                System.out.println("valid");
+                //TODO: read file and check code against file contents, output error explaining code does not match exisisting codes
+            } else {
+                System.out.println("invalid");
+                //TODO: output error explaining code is invalid format
+            }
+        }
     }
 
     public Integer fromLeft(JComponent component) {
-        Integer fromLeft = 640 - component.getWidth() / 2; //calculates how far along the component should be
+        //Determines where the component should be placed horizontally so that it appears in the middle
+        Integer fromLeft = 640 - component.getWidth() / 2;
         return fromLeft;
     }
 

@@ -1,10 +1,10 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import javax.swing.Timer;
+
 import java.awt.Container;
 import java.awt.BorderLayout;
-
-import javax.swing.Timer;
 
 public class JoinerLobby {
 
