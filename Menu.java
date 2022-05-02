@@ -37,7 +37,7 @@ public class Menu {
         //TITLE LABEL
         titleLbl = new JLabel("Picture This!", JLabel.CENTER);
         titleLbl.setSize(700, 200);
-        titleLbl.setFont(new Font("Arial", Font.BOLD, 110));
+        titleLbl.setFont(titleLbl.getFont().deriveFont(Font.PLAIN, 110f));
         content.add(titleLbl);
 
         size = titleLbl.getSize();
