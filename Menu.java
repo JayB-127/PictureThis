@@ -37,21 +37,11 @@ public class Menu {
         //TITLE LABEL
         titleLbl = new JLabel("Picture This!", JLabel.CENTER);
         titleLbl.setSize(700, 200);
-        //Finds max font size that fits in label size -----
-        Font labelFont = titleLbl.getFont();
-        String labelText = titleLbl.getText();
-        int stringWidth = titleLbl.getFontMetrics(labelFont).stringWidth(labelText);
-        int componentWidth = titleLbl.getWidth();
-        double widthRatio = (double)componentWidth / (double)stringWidth;
-        int newFontSize = (int)(labelFont.getSize() * widthRatio);
-        int componentHeight = titleLbl.getHeight();
-        int fontSizeToUse = Math.min(newFontSize, componentHeight);
-        titleLbl.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
-        //-----
+        titleLbl.setFont(new Font("Arial", Font.BOLD, 110));
         content.add(titleLbl);
 
         size = titleLbl.getSize();
-        titleLbl.setBounds(fromLeft(titleLbl) + insets.left, 50 + insets.top, size.width, size.height);
+        titleLbl.setBounds(fromLeft(titleLbl) + insets.left, 70 + insets.top, size.width, size.height);
 
 
         //CREATE GAME BUTTON
@@ -149,7 +139,7 @@ public class Menu {
                 } else {
                     JOptionPane.showMessageDialog(
                         menuFrame,
-                        "The game code entered does not match an existing game code.\nPlease enter a game code of an current game.",
+                        "The game code entered does not match an existing game code.\nPlease enter a game code of a current game.",
                         "ERROR: Game code does not exist",
                         JOptionPane.ERROR_MESSAGE
                     );
