@@ -20,7 +20,6 @@ public class JoinerLobby {
 
         msgLbl = new JLabel("Please wait until the creator starts the game. Thank you :)", JLabel.CENTER);
         msgLbl.setFont(msgLbl.getFont().deriveFont(18.0f));
-
         content.add(msgLbl, BorderLayout.CENTER);
 
         timeLbl = new JLabel("", JLabel.CENTER);
@@ -38,7 +37,8 @@ public class JoinerLobby {
     public void ElapsedTime() {
         timer = new Timer(1000, e -> {
             counter++;
-            timeLbl.setText(String.format("[Time Elapsed: %S]", String.valueOf(counter)));
+            String output = String.format("[Time Elapsed: %S]", String.valueOf(counter));
+            timeLbl.setText(output);
         });
         timer.setInitialDelay(0);
         timer.start();
