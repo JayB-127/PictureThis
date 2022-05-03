@@ -20,6 +20,7 @@ public class Menu {
     JButton createGameBtn, joinGameBtn, quitGameBtn;
     JLabel titleLbl;
 
+
     public static void main(String[] args) {
         new Menu().show();
     }
@@ -112,7 +113,7 @@ public class Menu {
 
                     String line = null;
                     while ((line = breader.readLine()) != null) {
-                        if (line.trim().equals(gameCode.trim())) {
+                        if (line.trim().equals(gameCode)) {
                             found = true;
                         }
                     }
