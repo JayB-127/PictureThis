@@ -31,14 +31,18 @@ public class Menu {
 
         Insets insets = content.getInsets();
 
-
         //TITLE LABEL
         titleLbl = new JLabel("Picture This!", JLabel.CENTER);
         titleLbl.setSize(700, 200);
         titleLbl.setFont(titleLbl.getFont().deriveFont(Font.PLAIN, 110f));
         content.add(titleLbl);
 
-        titleLbl.setBounds(fromLeft(titleLbl) + insets.left, 70 + insets.top, titleLbl.getWidth(), titleLbl.getHeight());
+        titleLbl.setBounds(fromLeft(
+            titleLbl) + insets.left,
+            70 + insets.top,
+            titleLbl.getWidth(),
+            titleLbl.getHeight()
+        );
 
 
         //CREATE GAME BUTTON
@@ -49,7 +53,12 @@ public class Menu {
         });
         content.add(createGameBtn);
 
-        createGameBtn.setBounds(fromLeft(createGameBtn) + insets.left, 300 + insets.top, createGameBtn.getWidth(), createGameBtn.getHeight());
+        createGameBtn.setBounds(
+            fromLeft(createGameBtn) + insets.left,
+            300 + insets.top,
+            createGameBtn.getWidth(),
+            createGameBtn.getHeight()
+        );
 
 
         //JOIN GAME BUTTON
@@ -60,7 +69,11 @@ public class Menu {
         });
         content.add(joinGameBtn);
 
-        joinGameBtn.setBounds(fromLeft(joinGameBtn) + insets.left, 370 + insets.top, joinGameBtn.getWidth(), joinGameBtn.getHeight());
+        joinGameBtn.setBounds(
+            fromLeft(joinGameBtn) + insets.left,
+            370 + insets.top, joinGameBtn.getWidth(),
+            joinGameBtn.getHeight()
+        );
 
 
         //QUIT GAME BUTTON
@@ -71,7 +84,12 @@ public class Menu {
         });
         content.add(quitGameBtn);
 
-        quitGameBtn.setBounds(fromLeft(quitGameBtn) + insets.left, 440 + insets.top, quitGameBtn.getWidth(), quitGameBtn.getHeight());
+        quitGameBtn.setBounds(
+            fromLeft(quitGameBtn) + insets.left,
+            440 + insets.top,
+            quitGameBtn.getWidth(),
+            quitGameBtn.getHeight()
+        );
 
 
         menuFrame.setSize(1280, 720);
@@ -99,10 +117,8 @@ public class Menu {
         );
         
         if (gameCode == null) {
-            //'CANCEL' option
+            //CANCEL selected
         } else {
-            //'OK' option
-
             if (gameCode.length() == 5 && gameCode.matches("^[A-Z0-9]*$")) {
                 Boolean found = false;
 
@@ -112,7 +128,7 @@ public class Menu {
 
                     String line = null;
                     while ((line = breader.readLine()) != null) {
-                        if (line.trim().equals(gameCode.trim())) {
+                        if (line.trim().equals(gameCode)) {
                             found = true;
                         }
                     }
