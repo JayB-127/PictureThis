@@ -124,7 +124,7 @@ public class Menu {
                 Boolean found = false;
 
                 try {
-                    FileReader freader = new FileReader("C:\\Users\\jwbra\\OneDrive\\Documents\\GitHub Repositories\\Interface-Test\\codes.txt");
+                    FileReader freader = new FileReader("D:\\GitHub Repos\\Interface-Test\\codes.txt");
                     BufferedReader breader = new BufferedReader(freader);
 
                     String line = null;
