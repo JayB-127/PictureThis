@@ -1,3 +1,4 @@
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
@@ -15,12 +16,12 @@ import java.awt.BorderLayout;
 public class DrawingPhase {
     
     JButton clearBtn, blackBtn, blueBtn, redBtn, greenBtn, magentaBtn, quitBtn, eraserBtn;
-    JLabel wordLbl, breakLbl;
+    JLabel wordLbl, breakLbl, timerLbl;
     Canvas canvas;
     JFrame drawingFrame = new JFrame("Drawing Phase");
 
     Timer timer;
-    int counter = 10; //set to half of round length chosen by creator
+    int counter = 20; //set to half of round length chosen by creator
 
     static JSpinner thicknessSpin;
 
@@ -82,8 +83,9 @@ public class DrawingPhase {
 
         breakLbl = new JLabel("---");
 
-        
         JPanel tools = new JPanel();
+        //JPanel tools = new JPanel(new BoxLayout(target, axis));
+
         tools.add(thicknessSpin);
         tools.add(blackBtn);
         tools.add(blueBtn);
@@ -94,12 +96,16 @@ public class DrawingPhase {
         tools.add(eraserBtn);   
         tools.add(clearBtn);
 
-        content.add(tools, BorderLayout.SOUTH);
+        content.add(tools, BorderLayout.LINE_START);
 
 
         wordLbl = new JLabel("[draw this word]", JLabel.CENTER);
         wordLbl.setFont(wordLbl.getFont().deriveFont(25.0f));
         content.add(wordLbl, BorderLayout.NORTH);
+
+        timerLbl = new JLabel("", JLabel.CENTER);
+        timerLbl.setFont(timerLbl.getFont().deriveFont(25.0f));;
+        content.add(timerLbl, BorderLayout.SOUTH);
 
 
         drawingFrame.setSize(1280, 720);
@@ -112,10 +118,13 @@ public class DrawingPhase {
     }
 
     public void countDown() {
+
         timer = new Timer(1000, e -> {
             if (counter > 0) {
                 counter--;
                 System.out.println(counter);
+                String output = String.format("Time Left To Draw: %s", counter);
+                timerLbl.setText(output);
             } else {
                 //TODO: load guessing phase, server side stuff etc
                 drawingFrame.dispose();
