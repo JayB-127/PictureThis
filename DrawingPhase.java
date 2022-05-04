@@ -84,7 +84,6 @@ public class DrawingPhase {
         breakLbl = new JLabel("---");
 
         JPanel tools = new JPanel();
-        //JPanel tools = new JPanel(new BoxLayout(target, axis));
 
         tools.add(thicknessSpin);
         tools.add(blackBtn);
