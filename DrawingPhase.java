@@ -20,12 +20,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import java.awt.Image;
+
 public class DrawingPhase {
     
-    JButton clearBtn, blackBtn, brownBtn, redBtn, orangeBtn, yellowBtn, greenBtn, lightBlueBtn, darkBlueBtn, pinkBtn, purpleBtn, quitBtn, eraserBtn;
+    JButton clearBtn, blackBtn, greyBtn, brownBtn, redBtn, orangeBtn, yellowBtn, greenBtn, lightBlueBtn, darkBlueBtn, pinkBtn, purpleBtn, quitBtn, eraserBtn;
     JLabel wordLbl, breakLbl, timerLbl;
     Canvas canvas;
     JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
+    Image image;
 
     Timer timer;
     int counter = 61; //set to half of round length chosen by creator + 1
@@ -84,6 +87,13 @@ public class DrawingPhase {
         blackBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         blackBtn.addActionListener(e -> {
             canvas.black();
+        });
+
+        greyBtn = new JButton("");
+        greyBtn.setBackground(Color.decode("#757575"));
+        greyBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        greyBtn.addActionListener(e -> {
+            canvas.grey();
         });
 
         brownBtn = new JButton("");
@@ -167,6 +177,7 @@ public class DrawingPhase {
 
         tools.add(thicknessSpin);
         tools.add(blackBtn);
+        tools.add(greyBtn);
         tools.add(brownBtn);
         tools.add(redBtn);
         tools.add(orangeBtn);
@@ -190,7 +201,10 @@ public class DrawingPhase {
                 String output = String.format("Time Left To Draw: %s", counter);
                 timerLbl.setText(output);
             } else {
-                //TODO: load guessing phase, server side stuff etc
+                timer.stop();
+                //TODO: take image and server side stuff etc
+                GuessingPhase gp = new GuessingPhase();
+                gp.show();
                 drawingFrame.dispose();
             }
         });

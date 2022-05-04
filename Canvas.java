@@ -1,8 +1,6 @@
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
 
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -34,10 +32,11 @@ public class Canvas extends JComponent {
 
                 try {
                     DrawingPhase.thicknessSpin.commitEdit();
-                } catch ( java.text.ParseException excep ) {
+                } catch (java.text.ParseException excep) {
                     //error should not be reached due to disabling of keybaord input on JSpinner
-                    JOptionPane.showMessageDialog(null, "Thickness entered is not in the valid range! Enter a thickness within 1 - 50.", "ERROR: Invalid Input", JOptionPane.ERROR_MESSAGE);
+                    System.out.println(excep);
                 }
+
                 int value = (Integer) DrawingPhase.thicknessSpin.getValue();
                 setThickness(value);
 
@@ -78,6 +77,10 @@ public class Canvas extends JComponent {
 
     public void black() {
         graphics2d.setPaint(Color.decode("#000"));
+    }
+
+    public void grey() {
+        graphics2d.setPaint(Color.decode("#757575"));
     }
 
     public void brown() {
