@@ -1,9 +1,9 @@
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JFormattedTextField;
@@ -16,6 +16,9 @@ import java.awt.Component;
 import javax.swing.JComponent;
 
 import java.awt.GridLayout;
+import java.awt.BorderLayout;
+
+import java.awt.Dimension;
 
 public class DrawingPhase {
     
@@ -25,7 +28,7 @@ public class DrawingPhase {
     JFrame drawingFrame = new JFrame("Drawing Phase");
 
     Timer timer;
-    int counter = 20; //set to half of round length chosen by creator
+    int counter = 61; //set to half of round length chosen by creator + 1
 
     static JSpinner thicknessSpin;
 
@@ -49,7 +52,7 @@ public class DrawingPhase {
         content.add(wordLbl, BorderLayout.NORTH);
 
         timerLbl = new JLabel("", JLabel.CENTER);
-        timerLbl.setFont(timerLbl.getFont().deriveFont(25.0f));;
+        timerLbl.setFont(timerLbl.getFont().deriveFont(25.0f));
         content.add(timerLbl, BorderLayout.SOUTH);
 
 
@@ -58,13 +61,17 @@ public class DrawingPhase {
         drawingFrame.setVisible(true);
         drawingFrame.setResizable(false);
 
-        countDown();
+        countDown();    
 
     }
 
     private JComponent tools() {
         JPanel tools = new JPanel();
-        tools.setLayout(new GridLayout(0, 0));
+        tools.setPreferredSize(new Dimension(150, 0)); //Height value is negligable since since the panel will take the height of the interface
+
+        GridLayout gridLay = new GridLayout(0, 1);
+        gridLay.setVgap(30);
+        tools.setLayout(gridLay);
 
         clearBtn = new JButton("Clear");
         clearBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -108,15 +115,14 @@ public class DrawingPhase {
             canvas.erase();
         });
 
-        SpinnerModel model = new SpinnerNumberModel(1, 1, 35, 2);
+        SpinnerModel model = new SpinnerNumberModel(5, 1, 35, 2);
         thicknessSpin = new JSpinner(model);
         thicknessSpin.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JFormattedTextField textField = ((JSpinner.DefaultEditor) thicknessSpin.getEditor()).getTextField();
         textField.setEditable(false);
-
-        breakLbl = new JLabel("---");
-        breakLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textField.setHorizontalAlignment(JTextField.CENTER);
+        textField.setFont(textField.getFont().deriveFont(25.0f));
 
         tools.add(thicknessSpin);
         tools.add(blackBtn);
@@ -124,7 +130,6 @@ public class DrawingPhase {
         tools.add(redBtn);
         tools.add(greenBtn);
         tools.add(magentaBtn);
-        tools.add(breakLbl);
         tools.add(eraserBtn);   
         tools.add(clearBtn);
 
@@ -136,7 +141,6 @@ public class DrawingPhase {
         timer = new Timer(1000, e -> {
             if (counter > 0) {
                 counter--;
-                System.out.println(counter);
                 String output = String.format("Time Left To Draw: %s", counter);
                 timerLbl.setText(output);
             } else {
