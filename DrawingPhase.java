@@ -17,15 +17,15 @@ import javax.swing.JComponent;
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
-
+import java.awt.Color;
 import java.awt.Dimension;
 
 public class DrawingPhase {
     
-    JButton clearBtn, blackBtn, blueBtn, redBtn, greenBtn, magentaBtn, quitBtn, eraserBtn;
+    JButton clearBtn, blackBtn, brownBtn, redBtn, orangeBtn, yellowBtn, greenBtn, lightBlueBtn, darkBlueBtn, pinkBtn, purpleBtn, quitBtn, eraserBtn;
     JLabel wordLbl, breakLbl, timerLbl;
     Canvas canvas;
-    JFrame drawingFrame = new JFrame("Drawing Phase");
+    JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
 
     Timer timer;
     int counter = 61; //set to half of round length chosen by creator + 1
@@ -48,12 +48,12 @@ public class DrawingPhase {
         content.add(tools, BorderLayout.LINE_START);
 
         wordLbl = new JLabel("[draw this word]", JLabel.CENTER);
-        wordLbl.setFont(wordLbl.getFont().deriveFont(25.0f));
-        content.add(wordLbl, BorderLayout.NORTH);
+        wordLbl.setFont(wordLbl.getFont().deriveFont(35.0f));
+        content.add(wordLbl, BorderLayout.SOUTH);
 
         timerLbl = new JLabel("", JLabel.CENTER);
-        timerLbl.setFont(timerLbl.getFont().deriveFont(25.0f));
-        content.add(timerLbl, BorderLayout.SOUTH);
+        timerLbl.setFont(timerLbl.getFont().deriveFont(20.0f));
+        content.add(timerLbl, BorderLayout.NORTH);
 
 
         drawingFrame.setSize(1280, 720);
@@ -70,7 +70,7 @@ public class DrawingPhase {
         tools.setPreferredSize(new Dimension(150, 0)); //Height value is negligable since since the panel will take the height of the interface
 
         GridLayout gridLay = new GridLayout(0, 1);
-        gridLay.setVgap(30);
+        gridLay.setVgap(10);
         tools.setLayout(gridLay);
 
         clearBtn = new JButton("Clear");
@@ -79,35 +79,76 @@ public class DrawingPhase {
             canvas.clear();
         });
 
-        blackBtn = new JButton("Black");
+        blackBtn = new JButton("");
+        blackBtn.setBackground(Color.decode("#000"));
         blackBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         blackBtn.addActionListener(e -> {
             canvas.black();
         });
 
-        blueBtn = new JButton("Blue");
-        blueBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        blueBtn.addActionListener(e -> {
-            canvas.blue();
+        brownBtn = new JButton("");
+        brownBtn.setBackground(Color.decode("#8c4420"));
+        brownBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        brownBtn.addActionListener(e -> {
+            canvas.brown();
         });
 
-        redBtn = new JButton("Red");
+        redBtn = new JButton("");
+        redBtn.setBackground(Color.decode("#eb3434"));
         redBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         redBtn.addActionListener(e -> {
             canvas.red();
         });
 
-        greenBtn = new JButton("Green");
+        orangeBtn = new JButton("");
+        orangeBtn.setBackground(Color.decode("#ff7912"));
+        orangeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        orangeBtn.addActionListener(e -> {
+            canvas.orange();
+        });
+
+        yellowBtn = new JButton("");
+        yellowBtn.setBackground(Color.decode("#ffde38"));
+        yellowBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        yellowBtn.addActionListener(e -> {
+            canvas.yellow();
+        });
+
+        greenBtn = new JButton("");
+        greenBtn.setBackground(Color.decode("#17e658"));
         greenBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         greenBtn.addActionListener(e -> {
             canvas.green();
         });
 
-        magentaBtn = new JButton("Magenta");
-        magentaBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        magentaBtn.addActionListener(e -> {
-            canvas.magenta();
+        lightBlueBtn = new JButton("");
+        lightBlueBtn.setBackground(Color.decode("#0fcfff"));
+        lightBlueBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lightBlueBtn.addActionListener(e -> {
+            canvas.lightBlue();
         });
+
+        darkBlueBtn = new JButton("");
+        darkBlueBtn.setBackground(Color.decode("#1f1bf7"));
+        darkBlueBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        darkBlueBtn.addActionListener(e -> {
+            canvas.darkBlue();
+        });
+
+        pinkBtn = new JButton("");
+        pinkBtn.setBackground(Color.decode("#fc65f7"));
+        pinkBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        pinkBtn.addActionListener(e -> {
+            canvas.pink();
+        });
+
+        purpleBtn = new JButton("");
+        purpleBtn.setBackground(Color.decode("#b005ff"));
+        purpleBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        purpleBtn.addActionListener(e -> {
+            canvas.purple();
+        });
+
 
         eraserBtn = new JButton("Eraser");
         eraserBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -122,15 +163,20 @@ public class DrawingPhase {
         JFormattedTextField textField = ((JSpinner.DefaultEditor) thicknessSpin.getEditor()).getTextField();
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.CENTER);
-        textField.setFont(textField.getFont().deriveFont(25.0f));
+        textField.setFont(textField.getFont().deriveFont(20.0f));
 
         tools.add(thicknessSpin);
         tools.add(blackBtn);
-        tools.add(blueBtn);
+        tools.add(brownBtn);
         tools.add(redBtn);
+        tools.add(orangeBtn);
+        tools.add(yellowBtn);
         tools.add(greenBtn);
-        tools.add(magentaBtn);
-        tools.add(eraserBtn);   
+        tools.add(lightBlueBtn);
+        tools.add(darkBlueBtn);
+        tools.add(pinkBtn);
+        tools.add(purpleBtn);
+        tools.add(eraserBtn);
         tools.add(clearBtn);
 
         return tools;

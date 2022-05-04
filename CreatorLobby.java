@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 
 public class CreatorLobby {
     
-    JFrame creatorLobbyFrame = new JFrame("Creator  Lobby");
+    JFrame creatorLobbyFrame = new JFrame("Picture This! - Creator  Lobby");
     
     public void show() {
 

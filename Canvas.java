@@ -2,6 +2,7 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -76,23 +77,43 @@ public class Canvas extends JComponent {
     }
 
     public void black() {
-        graphics2d.setPaint(Color.BLACK);
+        graphics2d.setPaint(Color.decode("#000"));
     }
 
-    public void blue() {
-        graphics2d.setPaint(Color.BLUE);
+    public void brown() {
+        graphics2d.setPaint(Color.decode("#8c4420"));
     }
 
     public void red() {
-        graphics2d.setPaint(Color.RED);
+        graphics2d.setPaint(Color.decode("#eb3434"));
+    }
+
+    public void orange() {
+        graphics2d.setPaint(Color.decode("#ff7912"));
+    }
+
+    public void yellow() {
+        graphics2d.setPaint(Color.decode("#ffde38"));
     }
 
     public void green() {
-        graphics2d.setPaint(Color.GREEN);
+        graphics2d.setPaint(Color.decode("#17e658"));
     }
 
-    public void magenta() {
-        graphics2d.setPaint(Color.MAGENTA);
+    public void lightBlue() {
+        graphics2d.setPaint(Color.decode("#0fcfff"));
+    }
+
+    public void darkBlue() {
+        graphics2d.setPaint(Color.decode("#1f1bf7"));
+    }
+
+    public void pink() {
+        graphics2d.setPaint(Color.decode("#fc65f7"));
+    }
+
+    public void purple() {
+        graphics2d.setPaint(Color.decode("#b005ff"));
     }
 
     public void setThickness(Integer thickness) {
