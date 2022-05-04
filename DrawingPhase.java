@@ -11,7 +11,11 @@ import javax.swing.JFormattedTextField;
 import javax.swing.Timer;
 
 import java.awt.Container;
-import java.awt.BorderLayout;
+import java.awt.Component;
+
+import javax.swing.JComponent;
+
+import java.awt.GridLayout;
 
 public class DrawingPhase {
     
@@ -25,7 +29,6 @@ public class DrawingPhase {
 
     static JSpinner thicknessSpin;
 
-
     public static void main(String[] args) {
         new DrawingPhase().show();
     }
@@ -37,66 +40,9 @@ public class DrawingPhase {
 
         canvas = new Canvas();
         content.add(canvas, BorderLayout.CENTER);
-        
 
-        clearBtn = new JButton("Clear");
-        clearBtn.addActionListener(e -> {
-            canvas.clear();
-        });
-
-        blackBtn = new JButton("Black");
-        blackBtn.addActionListener(e -> {
-            canvas.black();
-        });
-
-        blueBtn = new JButton("Blue");
-        blueBtn.addActionListener(e -> {
-            canvas.blue();
-        });
-
-        redBtn = new JButton("Red");
-        redBtn.addActionListener(e -> {
-            canvas.red();
-        });
-
-        greenBtn = new JButton("Green");
-        greenBtn.addActionListener(e -> {
-            canvas.green();
-        });
-
-        magentaBtn = new JButton("Magenta");
-        magentaBtn.addActionListener(e -> {
-            canvas.magenta();
-        });
-
-        eraserBtn = new JButton("Eraser");
-        eraserBtn.addActionListener(e -> {
-            canvas.erase();
-        });
-
-
-        SpinnerModel model = new SpinnerNumberModel(1, 1, 35, 2);
-        thicknessSpin = new JSpinner(model);
-        JFormattedTextField textField = ((JSpinner.DefaultEditor) thicknessSpin.getEditor()).getTextField();
-        textField.setEditable(false);
-
-
-        breakLbl = new JLabel("---");
-
-        JPanel tools = new JPanel();
-
-        tools.add(thicknessSpin);
-        tools.add(blackBtn);
-        tools.add(blueBtn);
-        tools.add(redBtn);
-        tools.add(greenBtn);
-        tools.add(magentaBtn);
-        tools.add(breakLbl);
-        tools.add(eraserBtn);   
-        tools.add(clearBtn);
-
+        JComponent tools = tools();
         content.add(tools, BorderLayout.LINE_START);
-
 
         wordLbl = new JLabel("[draw this word]", JLabel.CENTER);
         wordLbl.setFont(wordLbl.getFont().deriveFont(25.0f));
@@ -116,7 +62,76 @@ public class DrawingPhase {
 
     }
 
-    public void countDown() {
+    private JComponent tools() {
+        JPanel tools = new JPanel();
+        tools.setLayout(new GridLayout(0, 0));
+
+        clearBtn = new JButton("Clear");
+        clearBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        clearBtn.addActionListener(e -> {
+            canvas.clear();
+        });
+
+        blackBtn = new JButton("Black");
+        blackBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        blackBtn.addActionListener(e -> {
+            canvas.black();
+        });
+
+        blueBtn = new JButton("Blue");
+        blueBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        blueBtn.addActionListener(e -> {
+            canvas.blue();
+        });
+
+        redBtn = new JButton("Red");
+        redBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        redBtn.addActionListener(e -> {
+            canvas.red();
+        });
+
+        greenBtn = new JButton("Green");
+        greenBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        greenBtn.addActionListener(e -> {
+            canvas.green();
+        });
+
+        magentaBtn = new JButton("Magenta");
+        magentaBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        magentaBtn.addActionListener(e -> {
+            canvas.magenta();
+        });
+
+        eraserBtn = new JButton("Eraser");
+        eraserBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        eraserBtn.addActionListener(e -> {
+            canvas.erase();
+        });
+
+        SpinnerModel model = new SpinnerNumberModel(1, 1, 35, 2);
+        thicknessSpin = new JSpinner(model);
+        thicknessSpin.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JFormattedTextField textField = ((JSpinner.DefaultEditor) thicknessSpin.getEditor()).getTextField();
+        textField.setEditable(false);
+
+        breakLbl = new JLabel("---");
+        breakLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        tools.add(thicknessSpin);
+        tools.add(blackBtn);
+        tools.add(blueBtn);
+        tools.add(redBtn);
+        tools.add(greenBtn);
+        tools.add(magentaBtn);
+        tools.add(breakLbl);
+        tools.add(eraserBtn);   
+        tools.add(clearBtn);
+
+        return tools;
+    }
+
+    private void countDown() {
 
         timer = new Timer(1000, e -> {
             if (counter > 0) {
