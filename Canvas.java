@@ -46,9 +46,9 @@ public class Canvas extends JComponent {
                     oldx = currentx;
                     oldy = currenty;
                 }
+
             }
         });
-
     }
 
     protected void paintComponent(Graphics g) {

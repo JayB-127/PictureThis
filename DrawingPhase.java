@@ -20,7 +20,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.Rectangle;
+import javax.swing.ImageIcon;
+
 
 public class DrawingPhase {
     
@@ -28,10 +33,9 @@ public class DrawingPhase {
     JLabel wordLbl, breakLbl, timerLbl;
     Canvas canvas;
     JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
-    Image image;
 
     Timer timer;
-    int counter = 61; //set to half of round length chosen by creator + 1
+    int counter = 5; //set to half of round length chosen by creator + 1
 
     static JSpinner thicknessSpin;
 
@@ -159,7 +163,6 @@ public class DrawingPhase {
             canvas.purple();
         });
 
-
         eraserBtn = new JButton("Eraser");
         eraserBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         eraserBtn.addActionListener(e -> {
@@ -213,4 +216,18 @@ public class DrawingPhase {
         timer.start();
     }
 
+    public ImageIcon getBackgroundImage() {
+        try {
+            Robot rbt = new Robot();
+            Toolkit tk = Toolkit.getDefaultToolkit();
+            Dimension dim = tk.getScreenSize();
+            BufferedImage background = rbt.createScreenCapture(new Rectangle(0, 0, (int) dim.getWidth(), (int) dim.getHeight()));
+            ImageIcon image = new ImageIcon(background);
+            return image;
+            //return new ImageIcon(background);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }
