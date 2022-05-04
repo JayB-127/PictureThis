@@ -30,11 +30,11 @@ public class JoinerLobby {
         joinerLobbyFrame.setVisible(true);
         joinerLobbyFrame.setResizable(false);
 
-        ElapsedTime();
+        elapsedTime();
 
     }
 
-    public void ElapsedTime() {
+    public void elapsedTime() {
         timer = new Timer(1000, e -> {
             counter++;
             String output = String.format("[Time Elapsed: %S]", String.valueOf(counter));
