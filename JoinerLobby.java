@@ -8,7 +8,7 @@ import java.awt.BorderLayout;
 
 public class JoinerLobby {
 
-    JFrame joinerLobbyFrame = new JFrame("Joiner  Lobby");
+    JFrame joinerLobbyFrame = new JFrame("Picture This! - Joiner  Lobby");
     JLabel msgLbl, timeLbl;
     Timer timer;
     int counter = -1;

@@ -1,5 +1,4 @@
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
 
 import java.awt.Image;
 import java.awt.Graphics2D;
@@ -33,10 +32,11 @@ public class Canvas extends JComponent {
 
                 try {
                     DrawingPhase.thicknessSpin.commitEdit();
-                } catch ( java.text.ParseException excep ) {
+                } catch (java.text.ParseException excep) {
                     //error should not be reached due to disabling of keybaord input on JSpinner
-                    JOptionPane.showMessageDialog(null, "Thickness entered is not in the valid range! Enter a thickness within 1 - 50.", "ERROR: Invalid Input", JOptionPane.ERROR_MESSAGE);
+                    System.out.println(excep);
                 }
+
                 int value = (Integer) DrawingPhase.thicknessSpin.getValue();
                 setThickness(value);
 
@@ -76,23 +76,47 @@ public class Canvas extends JComponent {
     }
 
     public void black() {
-        graphics2d.setPaint(Color.BLACK);
+        graphics2d.setPaint(Color.decode("#000"));
     }
 
-    public void blue() {
-        graphics2d.setPaint(Color.BLUE);
+    public void grey() {
+        graphics2d.setPaint(Color.decode("#757575"));
+    }
+
+    public void brown() {
+        graphics2d.setPaint(Color.decode("#8c4420"));
     }
 
     public void red() {
-        graphics2d.setPaint(Color.RED);
+        graphics2d.setPaint(Color.decode("#eb3434"));
+    }
+
+    public void orange() {
+        graphics2d.setPaint(Color.decode("#ff7912"));
+    }
+
+    public void yellow() {
+        graphics2d.setPaint(Color.decode("#ffde38"));
     }
 
     public void green() {
-        graphics2d.setPaint(Color.GREEN);
+        graphics2d.setPaint(Color.decode("#17e658"));
     }
 
-    public void magenta() {
-        graphics2d.setPaint(Color.MAGENTA);
+    public void lightBlue() {
+        graphics2d.setPaint(Color.decode("#0fcfff"));
+    }
+
+    public void darkBlue() {
+        graphics2d.setPaint(Color.decode("#1f1bf7"));
+    }
+
+    public void pink() {
+        graphics2d.setPaint(Color.decode("#fc65f7"));
+    }
+
+    public void purple() {
+        graphics2d.setPaint(Color.decode("#b005ff"));
     }
 
     public void setThickness(Integer thickness) {
