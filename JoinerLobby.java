@@ -1,6 +1,5 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import javax.swing.Timer;
 
 import java.awt.Container;
@@ -9,7 +8,7 @@ import java.awt.BorderLayout;
 public class JoinerLobby {
 
     JFrame joinerLobbyFrame = new JFrame("Picture This! - Joiner  Lobby");
-    JLabel msgLbl, timeLbl;
+    JLabel welcomeLbl, msgLbl, timeLbl;
     Timer timer;
     int counter = -1;
     
@@ -18,17 +17,22 @@ public class JoinerLobby {
         Container content = joinerLobbyFrame.getContentPane();
         content.setLayout(new BorderLayout());
 
+        welcomeLbl = new JLabel(String.format("Welcome %s", Menu.username), JLabel.CENTER);
+        welcomeLbl.setFont(welcomeLbl.getFont().deriveFont(20.0f));
+        content.add(welcomeLbl, BorderLayout.NORTH);
+
         msgLbl = new JLabel("Please wait until the creator starts the game. Thank you :)", JLabel.CENTER);
-        msgLbl.setFont(msgLbl.getFont().deriveFont(18.0f));
+        msgLbl.setFont(msgLbl.getFont().deriveFont(14.0f));
         content.add(msgLbl, BorderLayout.CENTER);
 
         timeLbl = new JLabel("", JLabel.CENTER);
-        content.add(timeLbl, BorderLayout.NORTH);
+        content.add(timeLbl, BorderLayout.SOUTH);
 
         joinerLobbyFrame.setSize(640, 360);
         joinerLobbyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         joinerLobbyFrame.setVisible(true);
         joinerLobbyFrame.setResizable(false);
+        joinerLobbyFrame.setLocationRelativeTo(null);
 
         elapsedTime();
 

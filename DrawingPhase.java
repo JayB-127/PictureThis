@@ -1,30 +1,27 @@
+import javax.swing.JFrame;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
+import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.JFormattedTextField;
-
 import javax.swing.Timer;
 
 import java.awt.Container;
 import java.awt.Component;
 
-import javax.swing.JComponent;
-
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Color;
 
 import java.awt.image.BufferedImage;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.Rectangle;
-import javax.swing.ImageIcon;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 
 public class DrawingPhase {
@@ -35,7 +32,7 @@ public class DrawingPhase {
     JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
 
     Timer timer;
-    int counter = 5; //set to half of round length chosen by creator + 1
+    int counter = 61; //CreatorLobby.roundLength / 2 + 1 (rounded if necessary)
 
     static JSpinner thicknessSpin;
 
@@ -67,6 +64,7 @@ public class DrawingPhase {
         drawingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         drawingFrame.setVisible(true);
         drawingFrame.setResizable(false);
+        drawingFrame.setLocationRelativeTo(null);
 
         countDown();    
 
@@ -205,7 +203,7 @@ public class DrawingPhase {
                 timerLbl.setText(output);
             } else {
                 timer.stop();
-                //TODO: take image and server side stuff etc
+                saveCanvasImage();
                 GuessingPhase gp = new GuessingPhase();
                 gp.show();
                 drawingFrame.dispose();
@@ -216,18 +214,14 @@ public class DrawingPhase {
         timer.start();
     }
 
-    public ImageIcon getBackgroundImage() {
+    public void saveCanvasImage() {
+        BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+        canvas.paint(image.getGraphics());
         try {
-            Robot rbt = new Robot();
-            Toolkit tk = Toolkit.getDefaultToolkit();
-            Dimension dim = tk.getScreenSize();
-            BufferedImage background = rbt.createScreenCapture(new Rectangle(0, 0, (int) dim.getWidth(), (int) dim.getHeight()));
-            ImageIcon image = new ImageIcon(background);
-            return image;
-            //return new ImageIcon(background);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+            ImageIO.write(image, "png", new File("drawing.png")); //save with order so server knows which order to display drawings
+        } catch (IOException excep) {
+            System.out.println(excep);
         }
     }
+
 }

@@ -10,6 +10,7 @@ public class CreatorLobby {
         creatorLobbyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         creatorLobbyFrame.setVisible(true);
         creatorLobbyFrame.setResizable(false);
+        creatorLobbyFrame.setLocationRelativeTo(null);
     }
 
 }

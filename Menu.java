@@ -20,6 +20,8 @@ public class Menu {
     JButton createGameBtn, joinGameBtn, quitGameBtn;
     JLabel titleLbl;
 
+    static String username;
+
 
     public static void main(String[] args) {
         new Menu().show();
@@ -97,6 +99,7 @@ public class Menu {
         menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuFrame.setVisible(true);
         menuFrame.setResizable(false);
+        menuFrame.setLocationRelativeTo(null);
 
     }
 
@@ -124,7 +127,7 @@ public class Menu {
                 Boolean found = false;
 
                 try {
-                    FileReader freader = new FileReader("D:\\GitHub Repos\\Interface-Test\\codes.txt");
+                    FileReader freader = new FileReader("codes.txt");
                     BufferedReader breader = new BufferedReader(freader);
 
                     String line = null;
@@ -143,6 +146,7 @@ public class Menu {
                 }
 
                 if (found == true) {
+                    setUsername();
                     JoinerLobby jl = new JoinerLobby();
                     jl.show();
                     menuFrame.dispose();
@@ -171,6 +175,18 @@ public class Menu {
         //Determines where the component should be placed horizontally so that it appears in the middle
         Integer fromLeft = 640 - component.getWidth() / 2;
         return fromLeft;
+    }
+
+    public void setUsername() {
+        username = (String) JOptionPane.showInputDialog(
+            menuFrame,
+            "Enter a username that you would like to go by:",
+            "Enter Username",
+            JOptionPane.PLAIN_MESSAGE,
+            null,
+            null,
+            "Guest"
+        );
     }
 
 }
