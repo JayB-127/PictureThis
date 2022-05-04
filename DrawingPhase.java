@@ -30,11 +30,11 @@ public class DrawingPhase {
     JLabel wordLbl, breakLbl, timerLbl;
     Canvas canvas;
     JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
+    
+    static JSpinner thicknessSpin;
 
     Timer timer;
     int counter = 61; //CreatorLobby.roundLength / 2 + 1 (rounded if necessary)
-
-    static JSpinner thicknessSpin;
 
     public static void main(String[] args) {
         new DrawingPhase().show();
@@ -72,7 +72,7 @@ public class DrawingPhase {
 
     private JComponent tools() {
         JPanel tools = new JPanel();
-        tools.setPreferredSize(new Dimension(150, 0)); //Height value is negligable since since the panel will take the height of the interface
+        tools.setPreferredSize(new Dimension(75, 0)); //Height value is negligable since since the panel will take the max height it can in the interface
 
         GridLayout gridLay = new GridLayout(0, 1);
         gridLay.setVgap(10);
