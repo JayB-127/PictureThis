@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ import java.awt.Color;
 
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -34,7 +36,7 @@ public class DrawingPhase {
     static JSpinner thicknessSpin;
 
     Timer timer;
-    int counter = 61; //CreatorLobby.roundLength / 2 + 1 (rounded if necessary)
+    int counter = 61; //CreatorLobby.roundLength / 2 + 1 (round up if necessary)
 
     public static void main(String[] args) {
         new DrawingPhase().show();
@@ -79,6 +81,8 @@ public class DrawingPhase {
         tools.setLayout(gridLay);
 
         clearBtn = new JButton("Clear");
+        clearBtn.setBackground(Color.decode("#a3a3a3"));
+        clearBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         clearBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         clearBtn.addActionListener(e -> {
             canvas.clear();
@@ -86,6 +90,7 @@ public class DrawingPhase {
 
         blackBtn = new JButton("");
         blackBtn.setBackground(Color.decode("#000"));
+        blackBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         blackBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         blackBtn.addActionListener(e -> {
             canvas.black();
@@ -93,6 +98,7 @@ public class DrawingPhase {
 
         greyBtn = new JButton("");
         greyBtn.setBackground(Color.decode("#757575"));
+        greyBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         greyBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         greyBtn.addActionListener(e -> {
             canvas.grey();
@@ -100,6 +106,7 @@ public class DrawingPhase {
 
         brownBtn = new JButton("");
         brownBtn.setBackground(Color.decode("#8c4420"));
+        brownBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         brownBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         brownBtn.addActionListener(e -> {
             canvas.brown();
@@ -107,6 +114,7 @@ public class DrawingPhase {
 
         redBtn = new JButton("");
         redBtn.setBackground(Color.decode("#eb3434"));
+        redBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         redBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         redBtn.addActionListener(e -> {
             canvas.red();
@@ -114,6 +122,7 @@ public class DrawingPhase {
 
         orangeBtn = new JButton("");
         orangeBtn.setBackground(Color.decode("#ff7912"));
+        orangeBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         orangeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         orangeBtn.addActionListener(e -> {
             canvas.orange();
@@ -121,6 +130,7 @@ public class DrawingPhase {
 
         yellowBtn = new JButton("");
         yellowBtn.setBackground(Color.decode("#ffde38"));
+        yellowBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         yellowBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         yellowBtn.addActionListener(e -> {
             canvas.yellow();
@@ -128,6 +138,7 @@ public class DrawingPhase {
 
         greenBtn = new JButton("");
         greenBtn.setBackground(Color.decode("#17e658"));
+        greenBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         greenBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         greenBtn.addActionListener(e -> {
             canvas.green();
@@ -135,6 +146,7 @@ public class DrawingPhase {
 
         lightBlueBtn = new JButton("");
         lightBlueBtn.setBackground(Color.decode("#0fcfff"));
+        lightBlueBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         lightBlueBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         lightBlueBtn.addActionListener(e -> {
             canvas.lightBlue();
@@ -142,6 +154,7 @@ public class DrawingPhase {
 
         darkBlueBtn = new JButton("");
         darkBlueBtn.setBackground(Color.decode("#1f1bf7"));
+        darkBlueBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         darkBlueBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         darkBlueBtn.addActionListener(e -> {
             canvas.darkBlue();
@@ -149,6 +162,7 @@ public class DrawingPhase {
 
         pinkBtn = new JButton("");
         pinkBtn.setBackground(Color.decode("#fc65f7"));
+        pinkBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         pinkBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         pinkBtn.addActionListener(e -> {
             canvas.pink();
@@ -156,12 +170,15 @@ public class DrawingPhase {
 
         purpleBtn = new JButton("");
         purpleBtn.setBackground(Color.decode("#b005ff"));
+        purpleBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         purpleBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         purpleBtn.addActionListener(e -> {
             canvas.purple();
         });
 
         eraserBtn = new JButton("Eraser");
+        eraserBtn.setBackground(Color.decode("#FFFFFF"));
+        eraserBtn.setBorder(BorderFactory.createLineBorder(Color.decode("#000")));
         eraserBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         eraserBtn.addActionListener(e -> {
             canvas.erase();

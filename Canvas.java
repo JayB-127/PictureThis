@@ -54,9 +54,8 @@ public class Canvas extends JComponent {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (image == null) {
-            image = createImage(getWidth(), getHeight()); //size of canvas component
+            image = createImage(getWidth(), getHeight());
             graphics2d = (Graphics2D) image.getGraphics();
-            graphics2d.setStroke(new BasicStroke(3));
             clear();
         }
 
@@ -65,14 +64,14 @@ public class Canvas extends JComponent {
 
     public void clear() {
         Color oldColour = graphics2d.getColor();
-        graphics2d.setPaint(Color.WHITE);
+        graphics2d.setPaint(Color.decode("#FFFFFF"));
         graphics2d.fillRect(0, 0, getWidth(), getHeight());
         graphics2d.setPaint(oldColour);
         repaint();
     }
 
     public void erase() {
-        graphics2d.setPaint(Color.WHITE);
+        graphics2d.setPaint(Color.decode("#FFFFFF"));
     }
 
     public void black() {
