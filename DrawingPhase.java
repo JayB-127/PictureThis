@@ -235,7 +235,7 @@ public class DrawingPhase {
         BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
         canvas.paint(image.getGraphics());
         try {
-            ImageIO.write(image, "png", new File("drawing.png")); //save with order so server knows which order to display drawings
+            ImageIO.write(image, "png", new File("drawing.png"));
         } catch (IOException excep) {
             System.out.println(excep);
         }
