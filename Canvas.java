@@ -58,7 +58,6 @@ public class Canvas extends JComponent {
             graphics2d = (Graphics2D) image.getGraphics();
             clear();
         }
-
         g.drawImage(image, 0, 0, null);
     }
 
