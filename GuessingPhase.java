@@ -1,8 +1,11 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.plaf.DimensionUIResource;
 import javax.swing.text.BadLocationException;
 import javax.swing.JComponent;
@@ -12,6 +15,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.lang.reflect.GenericDeclaration;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
@@ -36,6 +40,21 @@ public class GuessingPhase{
         content.add(inputs, BorderLayout.SOUTH);
 
 
+        chatArea = new JTextArea(50, 10);
+        chatArea.setFont(chatArea.getFont().deriveFont(15.0f));
+
+        JScrollPane scroll = new JScrollPane(chatArea);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        content.add(chatArea, BorderLayout.CENTER);
+        content.add(scroll);
+
+        JPanel pics = new JPanel();
+        pics.setPreferredSize(new Dimension(0, 300));
+        pics.setBackground(Color.red);
+        content.add(pics, BorderLayout.NORTH);
+
+
         guessingFrame.setSize(1280, 720);
         guessingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guessingFrame.setVisible(true);
@@ -47,48 +66,32 @@ public class GuessingPhase{
     private JComponent inputs() {
         JPanel inputs = new JPanel();
         inputs.setBackground(Color.decode("#ABCDEF"));
-        inputs.setPreferredSize(new Dimension(0, 300));
+        inputs.setPreferredSize(new Dimension(0, 40));
 
-        inputs.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        GridLayout gridLay = new GridLayout(1, 0);
+        gridLay.setHgap(20);
 
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(5, 5, 5, 5);
+        inputs.setLayout(gridLay);
 
-        chatArea = new JTextArea();
-        chatArea.setEditable(false);
-        c.weightx = 0.0;
-        c.gridx = 0;
-        c.gridwidth = 3;
-        c.ipady = 200;
-        c.gridy = 0;
-        inputs.add(chatArea, c);
 
 
         inputTxt = new JTextField(5);
         inputTxt.setFont(inputTxt.getFont().deriveFont(20.0f));
         inputTxt.setHorizontalAlignment(JTextField.CENTER);
-        c.weightx = 0.5;
-        c.ipady = 20;
-        c.gridx = 0;
-        c.gridwidth = 2;
-        c.gridy = 1;
-        inputs.add(inputTxt, c);
+        inputTxt.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+        inputs.add(inputTxt);
+       
 
         submitBtn = new JButton("Submit");
-        c.gridx = 2;
-        c.gridy = 1;
-        c.gridwidth = 1;
-        inputs.add(submitBtn, c);
-    
         submitBtn.addActionListener(e -> {
             System.out.println("[Submitted]");
             //check if text area has a certain amount of lines, if too many, remove top line
             chatArea.append(inputTxt.getText() + "\n");
         });
+        submitBtn.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-
-
+        inputs.add(submitBtn);
 
         return inputs;
     }
