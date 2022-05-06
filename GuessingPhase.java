@@ -14,7 +14,7 @@ import java.awt.Dimension;
 
 import java.awt.Color;
 
-public class GuessingPhase{
+public class GuessingPhase {
     
     private JFrame guessingFrame = new JFrame("Picture This! - Guessing Phase");
     private JButton submitBtn;
