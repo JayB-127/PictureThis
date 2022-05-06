@@ -3,11 +3,17 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JComponent;
 
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import java.awt.Dimension;
+
+import java.awt.Component;
+
+import java.awt.Color;
 
 public class GuessingPhase{
     
@@ -21,17 +27,8 @@ public class GuessingPhase{
         Container content = guessingFrame.getContentPane();
         content.setLayout(new BorderLayout());
 
-
-        JPanel input = new JPanel();
-        input.setLayout(new FlowLayout());
-
-        submitBtn = new JButton("Submit");
-        submitBtn.addActionListener(e -> {
-            System.out.println("[Submitted]");
-        });
-
-        //input.add(comp);
-        input.add(submitBtn);
+        JComponent inputs = inputs();
+        content.add(inputs, BorderLayout.SOUTH);
 
 
         guessingFrame.setSize(1280, 720);
@@ -40,5 +37,28 @@ public class GuessingPhase{
         guessingFrame.setResizable(true);
         guessingFrame.setLocationRelativeTo(null);
 
+    }
+
+    private JComponent inputs() {
+        JPanel inputs = new JPanel();
+        inputs.setPreferredSize(new Dimension(0, 150));
+        inputs.setBackground(Color.decode("#ABCDEF"));
+        inputs.setLayout(new FlowLayout());
+
+        submitBtn = new JButton("Submit");
+        submitBtn.addActionListener(e -> {
+            System.out.println("[Submitted]");
+        });
+
+        inputTxt = new JTextField(5);
+
+        inputs.add(inputTxt);
+        inputs.add(submitBtn);
+
+        return inputs;
+    }
+
+    public static void main(String[] args) {
+        new GuessingPhase().show();
     }
 }

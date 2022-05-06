@@ -28,14 +28,14 @@ import java.io.IOException;
 
 public class DrawingPhase {
     
-    JButton clearBtn, blackBtn, greyBtn, brownBtn, redBtn, orangeBtn, yellowBtn, greenBtn, lightBlueBtn, darkBlueBtn, pinkBtn, purpleBtn, quitBtn, eraserBtn;
-    JLabel wordLbl, breakLbl, timerLbl;
+    private JButton clearBtn, blackBtn, greyBtn, brownBtn, redBtn, orangeBtn, yellowBtn, greenBtn, lightBlueBtn, darkBlueBtn, pinkBtn, purpleBtn, quitBtn, eraserBtn;
+    private JLabel wordLbl, timerLbl;
     Canvas canvas;
     JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
     
     static JSpinner thicknessSpin;
 
-    Timer timer;
+    private Timer timer;
     int counter = 61; //CreatorLobby.roundLength / 2 + 1 (round up if necessary)
 
     public static void main(String[] args) {
