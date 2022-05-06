@@ -1,23 +1,15 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.plaf.DimensionUIResource;
-import javax.swing.text.BadLocationException;
 import javax.swing.JComponent;
 
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
-import java.lang.reflect.GenericDeclaration;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 import java.awt.Dimension;
 
@@ -40,18 +32,34 @@ public class GuessingPhase{
         content.add(inputs, BorderLayout.SOUTH);
 
 
-        chatArea = new JTextArea(50, 10);
+        chatArea = new JTextArea(11, 30);
         chatArea.setFont(chatArea.getFont().deriveFont(15.0f));
+        chatArea.setLineWrap(true);
+        chatArea.setWrapStyleWord(true);
 
-        JScrollPane scroll = new JScrollPane(chatArea);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        JScrollPane scroll = new JScrollPane(
+            chatArea,
+            JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
+        );
 
-        content.add(chatArea, BorderLayout.CENTER);
-        content.add(scroll);
+        content.add(chatArea);
+
+
+
+        JPanel display = new JPanel();
+        display.setBackground(Color.BLUE);
+        display.setLayout(new FlowLayout());
+        display.add(chatArea);
+        display.add(scroll);
+
+        content.add(display, BorderLayout.CENTER);
+
+        
 
         JPanel pics = new JPanel();
         pics.setPreferredSize(new Dimension(0, 300));
-        pics.setBackground(Color.red);
+        pics.setBackground(Color.RED);
         content.add(pics, BorderLayout.NORTH);
 
 
@@ -69,7 +77,7 @@ public class GuessingPhase{
         inputs.setPreferredSize(new Dimension(0, 40));
 
         GridLayout gridLay = new GridLayout(1, 0);
-        gridLay.setHgap(20);
+        gridLay.setHgap(5);
 
         inputs.setLayout(gridLay);
 
