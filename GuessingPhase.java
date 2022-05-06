@@ -33,9 +33,7 @@ public class GuessingPhase{
         JComponent display = display();
         content.add(display, BorderLayout.CENTER);
 
-        JPanel pics = new JPanel();
-        pics.setPreferredSize(new Dimension(0, 300));
-        pics.setBackground(Color.GRAY);
+        JComponent pics = pics();
         content.add(pics, BorderLayout.NORTH);
 
 
@@ -86,6 +84,16 @@ public class GuessingPhase{
         display.add(scroll);
 
         return display;
+    }
+
+    private JComponent pics() {
+        JPanel pics = new JPanel();
+        pics.setPreferredSize(new Dimension(0, 300));
+        pics.setBackground(Color.GRAY);
+
+        //add drawings
+
+        return pics;
     }
 
     public static void main(String[] args) {

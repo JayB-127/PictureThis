@@ -224,6 +224,7 @@ public class DrawingPhase {
                 GuessingPhase gp = new GuessingPhase();
                 gp.show();
                 drawingFrame.dispose();
+                //send msg to server to take imgs and order
             }
         });
 
