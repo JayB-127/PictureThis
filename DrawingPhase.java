@@ -28,7 +28,7 @@ import java.io.IOException;
 
 public class DrawingPhase {
     
-    private JButton clearBtn, blackBtn, greyBtn, brownBtn, redBtn, orangeBtn, yellowBtn, greenBtn, lightBlueBtn, darkBlueBtn, pinkBtn, purpleBtn, quitBtn, eraserBtn;
+    private JButton clearBtn, blackBtn, greyBtn, brownBtn, redBtn, orangeBtn, yellowBtn, greenBtn, lightBlueBtn, darkBlueBtn, pinkBtn, purpleBtn, eraserBtn;
     private JLabel wordLbl, timerLbl;
     Canvas canvas;
     JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");

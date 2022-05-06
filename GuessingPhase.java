@@ -8,12 +8,12 @@ import javax.swing.JComponent;
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import java.awt.Dimension;
 
-import java.awt.Component;
-
 import java.awt.Color;
+import java.awt.Component;
 
 public class GuessingPhase{
     
@@ -45,6 +45,11 @@ public class GuessingPhase{
         inputs.setBackground(Color.decode("#ABCDEF"));
         inputs.setLayout(new FlowLayout());
 
+        GridLayout gridLay = new GridLayout(1, 0);
+        gridLay.setHgap(10);
+        gridLay.setVgap(30);
+        inputs.setLayout(gridLay);
+
         submitBtn = new JButton("Submit");
         submitBtn.addActionListener(e -> {
             System.out.println("[Submitted]");
@@ -58,7 +63,7 @@ public class GuessingPhase{
         return inputs;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {`
         new GuessingPhase().show();
     }
 }
