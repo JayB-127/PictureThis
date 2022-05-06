@@ -1,27 +1,26 @@
 import javax.swing.JFrame;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JComponent;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagConstraints;
-
 import java.awt.Dimension;
 
 import java.awt.Color;
-import java.awt.Component;
 
 public class GuessingPhase{
     
     JFrame guessingFrame = new JFrame("Picture This! - Guessing Phase");
-    JButton submitBtn;
-    JTextField inputTxt;
-    JTextArea chatArea;
+    private JButton submitBtn;
+    private JTextField inputTxt;
+    private JTextArea chatArea;
+    private JScrollPane scroll;
     
     public void show() {
 
@@ -30,36 +29,63 @@ public class GuessingPhase{
 
         JComponent inputs = inputs();
         content.add(inputs, BorderLayout.SOUTH);
+        
+        JComponent display = display();
+        content.add(display, BorderLayout.CENTER);
+
+        JPanel pics = new JPanel();
+        pics.setPreferredSize(new Dimension(0, 300));
+        pics.setBackground(Color.GRAY);
+        content.add(pics, BorderLayout.NORTH);
 
 
         guessingFrame.setSize(1280, 720);
         guessingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guessingFrame.setVisible(true);
-        guessingFrame.setResizable(true);
+        guessingFrame.setResizable(false);
         guessingFrame.setLocationRelativeTo(null);
+
+        guessingFrame.getRootPane().setDefaultButton(submitBtn);
 
     }
 
     private JComponent inputs() {
         JPanel inputs = new JPanel();
-        inputs.setPreferredSize(new Dimension(0, 150));
-        inputs.setBackground(Color.decode("#ABCDEF"));
+        inputs.setLayout(new FlowLayout());
+        inputs.setPreferredSize(new Dimension(0, 50));
 
-        GridLayout gridLay = new GridLayout(1, 0);
-        gridLay.setHgap(50);
-        inputs.setLayout(gridLay);
-
+        inputTxt = new JTextField(30);
+        inputTxt.setFont(inputTxt.getFont().deriveFont(20.0f));
+        inputTxt.setHorizontalAlignment(JTextField.CENTER);
+        inputs.add(inputTxt);
+       
         submitBtn = new JButton("Submit");
         submitBtn.addActionListener(e -> {
-            System.out.println("[Submitted]");
+            //TODO: validation
+            chatArea.append(inputTxt.getText() + "\n");
+            inputTxt.setText("");
         });
-
-        inputTxt = new JTextField(5);
-
-        inputs.add(inputTxt);
+        submitBtn.setPreferredSize(new Dimension(200, 30));
         inputs.add(submitBtn);
 
         return inputs;
+    }
+
+    private JComponent display() {
+        JPanel display = new JPanel();
+
+        chatArea = new JTextArea(12, 45);
+        chatArea.setFont(chatArea.getFont().deriveFont(20.0f));
+        chatArea.setEditable(false);
+        chatArea.setLineWrap(true);
+        chatArea.setWrapStyleWord(true);
+
+        scroll = new JScrollPane(chatArea);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        display.add(scroll);
+
+        return display;
     }
 
     public static void main(String[] args) {
