@@ -9,6 +9,7 @@ import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
 
 import java.awt.Dimension;
 
@@ -43,11 +44,9 @@ public class GuessingPhase{
         JPanel inputs = new JPanel();
         inputs.setPreferredSize(new Dimension(0, 150));
         inputs.setBackground(Color.decode("#ABCDEF"));
-        inputs.setLayout(new FlowLayout());
 
         GridLayout gridLay = new GridLayout(1, 0);
-        gridLay.setHgap(10);
-        gridLay.setVgap(30);
+        gridLay.setHgap(50);
         inputs.setLayout(gridLay);
 
         submitBtn = new JButton("Submit");
@@ -63,7 +62,7 @@ public class GuessingPhase{
         return inputs;
     }
 
-    public static void main(String[] args) {`
+    public static void main(String[] args) {
         new GuessingPhase().show();
     }
 }
