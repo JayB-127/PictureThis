@@ -16,9 +16,9 @@ import java.io.IOException;
 
 public class Menu {
     
-    JFrame menuFrame = new JFrame("Picture This! - Main Menu");
-    JButton createGameBtn, joinGameBtn, quitGameBtn;
-    JLabel titleLbl;
+    private JFrame menuFrame = new JFrame("Picture This! - Main Menu");
+    private JButton createGameBtn, joinGameBtn, quitGameBtn;
+    private JLabel titleLbl;
 
     static String username;
 

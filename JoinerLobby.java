@@ -7,10 +7,10 @@ import java.awt.BorderLayout;
 
 public class JoinerLobby {
 
-    JFrame joinerLobbyFrame = new JFrame("Picture This! - Joiner  Lobby");
-    JLabel welcomeLbl, msgLbl, timeLbl;
-    Timer timer;
-    int counter = -1;
+    private JFrame joinerLobbyFrame = new JFrame("Picture This! - Joiner  Lobby");
+    private JLabel welcomeLbl, msgLbl, timeLbl;
+    private Timer timer;
+    private int counter = -1;
     
     public void show() {
 

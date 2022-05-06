@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 
 public class Leaderboard {
     
-    JFrame leaderboardFrame = new JFrame("Picture This! - Leaderboard");
+    private JFrame leaderboardFrame = new JFrame("Picture This! - Leaderboard");
     
     public void show() {
 

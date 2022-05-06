@@ -16,7 +16,7 @@ import java.awt.Color;
 
 public class GuessingPhase{
     
-    JFrame guessingFrame = new JFrame("Picture This! - Guessing Phase");
+    private JFrame guessingFrame = new JFrame("Picture This! - Guessing Phase");
     private JButton submitBtn;
     private JTextField inputTxt;
     private JTextArea chatArea;
