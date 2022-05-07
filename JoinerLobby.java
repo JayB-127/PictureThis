@@ -48,6 +48,12 @@ public class JoinerLobby {
         timer.start();
     }
 
+    public void startGame() {
+        DrawingPhase dp = new DrawingPhase();
+        dp.show();
+        joinerLobbyFrame.dispose();
+    }
+
     //creator selects start game, sends game-start msg to server
     //server sends game-start msg to all players
     //joiner lobby socket listens for msg and starts drawing phase once recieved

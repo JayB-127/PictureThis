@@ -97,6 +97,10 @@ public class GuessingPhase {
         return pics;
     }
 
+    //TIMER
+    //end of timer, if statement if num rounds complete, if so, launch leaderboard
+
+
     public static void main(String[] args) {
         new GuessingPhase().show();
     }

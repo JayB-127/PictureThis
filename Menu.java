@@ -40,8 +40,8 @@ public class Menu {
         titleLbl.setFont(titleLbl.getFont().deriveFont(Font.PLAIN, 110f));
         content.add(titleLbl);
 
-        titleLbl.setBounds(fromLeft(
-            titleLbl) + insets.left,
+        titleLbl.setBounds(
+            fromLeft(titleLbl) + insets.left,
             70 + insets.top,
             titleLbl.getWidth(),
             titleLbl.getHeight()
@@ -108,7 +108,6 @@ public class Menu {
         CreatorLobby cl = new CreatorLobby();
         cl.show();
         menuFrame.dispose();
-        //start client
     }
 
     public void joinGame() {
