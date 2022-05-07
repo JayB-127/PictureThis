@@ -18,7 +18,7 @@ public class GuessingPhase {
     
     private JFrame guessingFrame = new JFrame("Picture This! - Guessing Phase");
     private JButton submitBtn;
-    private JTextField inputTxt;
+    static JTextField inputTxt;
     private JTextArea chatArea;
     private JScrollPane scroll;
     
@@ -61,7 +61,6 @@ public class GuessingPhase {
         submitBtn.addActionListener(e -> {
             //TODO: validation
             //send text to server
-
             chatArea.append(inputTxt.getText() + "\n");
             inputTxt.setText("");
         });
@@ -101,4 +100,5 @@ public class GuessingPhase {
     public static void main(String[] args) {
         new GuessingPhase().show();
     }
+
 }

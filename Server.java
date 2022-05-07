@@ -95,6 +95,7 @@ public class Server implements Runnable {
 
         public void sendMsg(String message) {
             out.println(message);
+            //TODO: send to chat area
         }
 
         public void shutdown() {

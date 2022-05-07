@@ -152,7 +152,6 @@ public class Menu {
                     JoinerLobby jl = new JoinerLobby();
                     jl.show();
                     menuFrame.dispose();
-                    //TODO: player connected to game thread on server
                 } else {
                     JOptionPane.showMessageDialog(
                         menuFrame,
