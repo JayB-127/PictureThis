@@ -104,9 +104,11 @@ public class Menu {
     }
 
     public void createGame() {
+        setUsername();
         CreatorLobby cl = new CreatorLobby();
         cl.show();
         menuFrame.dispose();
+        //start client
     }
 
     public void joinGame() {

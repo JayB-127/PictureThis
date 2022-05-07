@@ -60,6 +60,8 @@ public class GuessingPhase {
         submitBtn = new JButton("Submit");
         submitBtn.addActionListener(e -> {
             //TODO: validation
+            //send text to server
+
             chatArea.append(inputTxt.getText() + "\n");
             inputTxt.setText("");
         });
