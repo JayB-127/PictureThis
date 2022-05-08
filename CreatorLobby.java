@@ -121,6 +121,7 @@ public class CreatorLobby {
             DrawingPhase dp = new DrawingPhase();
             dp.show();
             creatorLobbyFrame.dispose();
+            //players in joiner lobby sent to drawing phase
         });
         content.add(startGame);
 
