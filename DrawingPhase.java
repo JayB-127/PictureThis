@@ -36,7 +36,7 @@ public class DrawingPhase {
     static JSpinner thicknessSpin;
 
     private Timer timer;
-    int counter = 61; //CreatorLobby.roundLength / 2 + 1 (round up if necessary)
+    int counter = CreatorLobby.roundLen / 2; //CreatorLobby.roundLength / 2 + 1 (round up if necessary)
 
     public static void main(String[] args) {
         new DrawingPhase().show();
