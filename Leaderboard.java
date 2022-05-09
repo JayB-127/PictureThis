@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.security.auth.x500.X500PrivateCredential;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -83,7 +82,6 @@ public class Leaderboard {
         leaderboardPane.add(leaderboard);
 
         return leaderboardPane;
-        
     }
 
     public JComponent menuBtn() {
@@ -105,10 +103,6 @@ public class Leaderboard {
 
         return btnPane;
         
-    }
-
-    public static void main(String[] args) {
-        new Leaderboard().show();
     }
 
 }
