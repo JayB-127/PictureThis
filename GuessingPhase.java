@@ -63,6 +63,7 @@ public class GuessingPhase {
         inputs.add(inputTxt);
        
         submitBtn = new JButton("Submit");
+        submitBtn.setBackground(Color.decode("#a3a3a3"));
         submitBtn.addActionListener(e -> {
 
             String input = inputTxt.getText();

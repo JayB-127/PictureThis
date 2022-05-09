@@ -8,6 +8,7 @@ import java.awt.Container;
 import java.awt.Insets;
 
 import java.awt.Font;
+import java.awt.Color;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -51,6 +52,7 @@ public class Menu {
         //CREATE GAME BUTTON
         createGameBtn = new JButton("Create New Game");
         createGameBtn.setSize(400, 50);
+        createGameBtn.setBackground(Color.decode("#a3a3a3"));
         createGameBtn.addActionListener(e -> {
             createGame();
         });
@@ -67,6 +69,7 @@ public class Menu {
         //JOIN GAME BUTTON
         joinGameBtn = new JButton("Join Existing Game");
         joinGameBtn.setSize(400, 50);
+        joinGameBtn.setBackground(Color.decode("#a3a3a3"));
         joinGameBtn.addActionListener(e -> {
             joinGame();
         });
@@ -82,6 +85,7 @@ public class Menu {
         //QUIT GAME BUTTON
         quitGameBtn = new JButton("Exit To Desktop");
         quitGameBtn.setSize(400, 50);
+        quitGameBtn.setBackground(Color.decode("#a3a3a3"));
         quitGameBtn.addActionListener(e -> {
             menuFrame.dispose();
         });

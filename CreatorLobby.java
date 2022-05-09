@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Insets;
 
 import java.awt.Font;
+import java.awt.Color;
 
 public class CreatorLobby {
     
@@ -81,6 +82,7 @@ public class CreatorLobby {
 
         startGame = new JButton("Start Game");
         startGame.setSize(new Dimension(150, 40));
+        startGame.setBackground(Color.decode("#a3a3a3"));
         startGame.setFont(startGame.getFont().deriveFont(Font.BOLD, 14.0f));
         startGame.addActionListener(e -> {
             
