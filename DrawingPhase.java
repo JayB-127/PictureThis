@@ -38,10 +38,6 @@ public class DrawingPhase {
     private Timer timer;
     int counter = CreatorLobby.roundLen / 2; //CreatorLobby.roundLength / 2 + 1 (round up if necessary)
 
-    public static void main(String[] args) {
-        new DrawingPhase().show();
-    }
-
     public void show() {
 
         Container content = drawingFrame.getContentPane();

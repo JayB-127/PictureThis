@@ -60,8 +60,9 @@ public class GuessingPhase {
         submitBtn = new JButton("Submit");
         submitBtn.addActionListener(e -> {
             //TODO: validation
+            //TODO: profanity filter
             //send text to server
-            chatArea.append(inputTxt.getText() + "\n");
+            chatArea.append(Menu.username + " guessed: " + inputTxt.getText() + "\n");
             inputTxt.setText("");
         });
         submitBtn.setPreferredSize(new Dimension(200, 30));
@@ -92,7 +93,7 @@ public class GuessingPhase {
         pics.setPreferredSize(new Dimension(0, 300));
         pics.setBackground(Color.GRAY);
 
-        //add drawings
+        //server orders images and sends to all clients, displaying images in this order
 
         return pics;
     }
