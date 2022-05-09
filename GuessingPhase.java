@@ -35,7 +35,7 @@ public class GuessingPhase {
     private JScrollPane scroll;
     private JLabel word1Img, word2Img, word3Img, timerLbl;
     private Timer timer;
-    private Integer counter = 60; //CreatorLobby.roundLen / 2
+    private Integer counter = CreatorLobby.roundLen / 2;
     
     public void show() {
 
@@ -228,15 +228,17 @@ public class GuessingPhase {
                 String output = String.format("Time Left To Guess: %s    ", counter);
                 timerLbl.setText(output);
             } else {
-                if (CreatorLobby.roundNum > 0) {
+                if (CreatorLobby.roundNum > 1) {
                     CreatorLobby.roundNum --;
                     DrawingPhase dp = new DrawingPhase();
                     dp.show();
                     guessingFrame.dispose();
+                    timer.stop();
                 } else {
                     Leaderboard lb = new Leaderboard();
                     lb.show();
                     guessingFrame.dispose();
+                    timer.stop();
                 }
             }
         });
