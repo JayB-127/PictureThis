@@ -13,4 +13,6 @@ public class Leaderboard {
         leaderboardFrame.setLocationRelativeTo(null);
     }
 
+    //TODO: DGDB
+
 }

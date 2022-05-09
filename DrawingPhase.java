@@ -32,6 +32,8 @@ public class DrawingPhase {
     private JLabel wordLbl, timerLbl;
     private Canvas canvas;
     private JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
+
+    static String finalWord = "beforehand";
     
     static JSpinner thicknessSpin;
 
@@ -48,6 +50,8 @@ public class DrawingPhase {
 
         JComponent tools = tools();
         content.add(tools, BorderLayout.LINE_START);
+
+        //TODO: call word selection method
 
         wordLbl = new JLabel("[draw this word]", JLabel.CENTER);
         wordLbl.setFont(wordLbl.getFont().deriveFont(35.0f));
@@ -67,6 +71,8 @@ public class DrawingPhase {
         countDown();    
 
     }
+
+    //TODO: word selection method
 
     private JComponent tools() {
         JPanel tools = new JPanel();
@@ -232,7 +238,7 @@ public class DrawingPhase {
         BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
         canvas.paint(image.getGraphics());
         try {
-            ImageIO.write(image, "png", new File("drawing.png"));
+            ImageIO.write(image, "png", new File("word1.png"));
         } catch (IOException excep) {
             System.out.println(excep);
         }
