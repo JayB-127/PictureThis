@@ -1,29 +1,11 @@
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
+import java.awt.*;
 
-import java.awt.Container;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Dimension;
-
-import java.awt.Color;
-
-import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 public class GuessingPhase {
@@ -34,6 +16,8 @@ public class GuessingPhase {
     private JTextArea chatArea;
     private JScrollPane scroll;
     private JLabel word1Img, word2Img, word3Img, timerLbl;
+    static Integer timeLeft = 0;
+    
     private Timer timer;
     private Integer counter = CreatorLobby.roundLen / 2;
     
@@ -102,6 +86,12 @@ public class GuessingPhase {
                     if (input.toLowerCase().equals(DrawingPhase.finalWord)) {
                         output = Menu.username + " guessed correctly!\n";
                         //output sent to server to be displayed to all other players
+
+                        //TODO: scoring system
+                        //save time taken to guess
+                        //timeLeft = length of round - time it took
+                        //WORK OUT SCORE AND ROUND TO INT, STORE AS INT IN FILE
+                        
                         chatArea.append(output);
                         inputTxt.setEditable(false);
                     } else {
@@ -228,6 +218,7 @@ public class GuessingPhase {
                 String output = String.format("Time Left To Guess: %s    ", counter);
                 timerLbl.setText(output);
             } else {
+                //call dgdb to determine difficulty for next round -> DrawingPhase.difficulty = ...
                 if (CreatorLobby.roundNum > 1) {
                     CreatorLobby.roundNum --;
                     DrawingPhase dp = new DrawingPhase();
@@ -248,9 +239,5 @@ public class GuessingPhase {
 
     };
 
-
-    public static void main(String[] args) {
-        new GuessingPhase().show();
-    }
-
+    //TODO: dgdb
 }

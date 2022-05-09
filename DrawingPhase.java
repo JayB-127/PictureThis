@@ -34,6 +34,7 @@ public class DrawingPhase {
     private JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
 
     static String finalWord = "beforehand";
+    static String difficulty = "medium";
     
     static JSpinner thicknessSpin;
 
