@@ -97,12 +97,9 @@ public class GuessingPhase {
                         int timeTaken = (CreatorLobby.roundLen / 2) - counter;
                         double percTimeTaken = ((double) timeTaken) / (CreatorLobby.roundLen / 2);
                         double percTimeLeft = 1 - percTimeTaken;
-                        double points = percTimeLeft * 1000;
+                        int points = (int) Math.round(percTimeLeft * 1000);
 
-                        System.out.println(timeTaken);
-                        System.out.println(percTimeTaken);
-                        System.out.println(percTimeLeft);
-                        System.out.println(points);
+                        //TODO: write points to file w username
                         
                         chatArea.append(output);
                         inputTxt.setEditable(false);
