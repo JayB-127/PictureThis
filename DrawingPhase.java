@@ -1,29 +1,16 @@
-import javax.swing.JFrame;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.Timer;
-
-import java.awt.Container;
-import java.awt.Component;
-
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class DrawingPhase {
@@ -33,13 +20,13 @@ public class DrawingPhase {
     private Canvas canvas;
     private JFrame drawingFrame = new JFrame("Picture This! - Drawing Phase");
 
-    static String finalWord = "beforehand";
-    static String difficulty = "medium";
+    static String finalWord;
+    static String difficulty = "m";
     
     static JSpinner thicknessSpin;
 
     private Timer timer;
-    int counter = CreatorLobby.roundLen / 2; //CreatorLobby.roundLength / 2 + 1 (round up if necessary)
+    int counter = CreatorLobby.roundLen / 2;
 
     public void show() {
 
@@ -52,9 +39,11 @@ public class DrawingPhase {
         JComponent tools = tools();
         content.add(tools, BorderLayout.LINE_START);
 
-        //TODO: call word selection method
+        String[] words = wordSelection("3player.csv");
+        finalWord = words[words.length-1].trim();
+        //output other words to the other clients
 
-        wordLbl = new JLabel("bee", JLabel.CENTER);
+        wordLbl = new JLabel(words[0], JLabel.CENTER);
         wordLbl.setFont(wordLbl.getFont().deriveFont(35.0f));
         content.add(wordLbl, BorderLayout.SOUTH);
 
@@ -73,7 +62,66 @@ public class DrawingPhase {
 
     }
 
-    //TODO: word selection method
+    private String[] wordSelection(String file) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("3player.csv"));
+            String str;
+            List<String[]> lines = new ArrayList<String[]>();
+            while ((str = br.readLine()) != null) {
+                String[] words = str.split(",");
+                if (words[0].trim().equals(difficulty)) {
+                    lines.add(words);
+                }
+            }
+            br.close();
+
+            String[][] array = new String[lines.size()][0];
+            lines.toArray(array);
+
+            int randomNum = ThreadLocalRandom.current().nextInt(0, array.length); //min and (max + 1)
+            
+            int i = 0;
+            for (String[] x : array) {
+                if (i == randomNum) {
+                    String word1 = array[i][1];
+                    String word2 = array[i][2];
+                    String finalWord = array[i][array.length - 1];
+                    if (Menu.numPlayers == 2) {
+                        String[] returns = new String[3];
+                        returns[0] = word1;
+                        returns[1] = word2;
+                        returns[2] = finalWord;
+                        return returns;
+                    } else if (Menu.numPlayers == 3) {
+                        String word3 = array[i][3];
+                        String[] returns = new String[4];
+                        returns[0] = word1;
+                        returns[1] = word2;
+                        returns[2] = word3;
+                        returns[3] = finalWord;
+                        return returns;
+                    } else if (Menu.numPlayers == 4) {
+                        String word3 = array[i][3];
+                        String word4 = array[i][4];
+                        String[] returns = new String[5];
+                        returns[0] = word1;
+                        returns[1] = word2;
+                        returns[2] = word3;
+                        returns[3] = word4;
+                        returns[4] = finalWord;
+                        return returns;
+                    }
+                } else {
+                    i += 1;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
 
     private JComponent tools() {
         JPanel tools = new JPanel();

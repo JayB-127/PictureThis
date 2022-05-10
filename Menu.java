@@ -22,6 +22,7 @@ public class Menu {
     private JLabel titleLbl;
 
     static String username;
+    static int numPlayers = 3; //set as three for example
 
 
     public static void main(String[] args) {
