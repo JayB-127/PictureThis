@@ -109,7 +109,7 @@ public class GuessingPhase {
                             String currentLine;
 
                             while((currentLine = reader.readLine()) != null) {
-                                // trim newline when comparing with lineToRemove
+                                //trim newline when comparing with lineToRemove
                                 String trimmedLine = currentLine.trim();
                                 if(trimmedLine.equals(lineToRemove)) continue;
                                 writer.write(currentLine + System.getProperty("line.separator"));
@@ -258,7 +258,6 @@ public class GuessingPhase {
                 String output = String.format("Time Left To Guess: %s    ", counter);
                 timerLbl.setText(output);
             } else {
-                //call dgdb to determine difficulty for next round -> DrawingPhase.difficulty = ...
                 if (CreatorLobby.roundNum > 1) {
                     CreatorLobby.roundNum --;
                     DrawingPhase dp = new DrawingPhase();

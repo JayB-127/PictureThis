@@ -64,8 +64,8 @@ public class DrawingPhase {
 
     private String[] wordSelection(String file) {
 
-        //TODO: dgdb to determine difficulty
-        
+        dgdb(); //sets difficulty
+
         try {
             BufferedReader br = new BufferedReader(new FileReader("3player.csv"));
             String str;
@@ -293,6 +293,44 @@ public class DrawingPhase {
         } catch (IOException excep) {
             System.out.println(excep);
         }
+    }
+
+    public void dgdb() {
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("scores.txt"));
+            String str;
+            int sum = 0;
+            while ((str = br.readLine()) != null) {
+                String[] words = str.split(" ");
+                sum += Integer.parseInt(words[2]);
+            }
+            double avrg = sum / Menu.numPlayers;
+            double percTimeTaken = 1 - avrg / 1000;
+
+            if (percTimeTaken >= 0 && percTimeTaken <= 0.3) {
+                System.out.println("[difficulty increased]");
+                if (difficulty.equals("e")) {
+                    difficulty = "m";
+                } else if (difficulty.equals("m")) {
+                    difficulty = "h";
+                }
+            } else if (percTimeTaken > 0.3 && percTimeTaken <= 1) {
+                System.out.println("[difficulty unchanged]");
+            } else if (percTimeTaken > 0.7 && percTimeTaken <= 1) {
+                System.out.println("[difficulty decreased]");
+                if (difficulty.equals("m")) {
+                    difficulty = "e";
+                } else if (difficulty.equals("h")) {
+                    difficulty = "m";
+                }
+            }
+
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
