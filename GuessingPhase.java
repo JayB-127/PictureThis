@@ -16,7 +16,8 @@ public class GuessingPhase {
     private JTextArea chatArea;
     private JScrollPane scroll;
     private JLabel word1Img, word2Img, word3Img, timerLbl;
-    static Integer timeLeft = 0;
+
+    static Integer timeTaken = CreatorLobby.roundLen / 2; //max time taken, assumes players do not guess
     
     private Timer timer;
     private Integer counter = CreatorLobby.roundLen / 2;
@@ -92,6 +93,16 @@ public class GuessingPhase {
                         //save time taken to guess
                         //timeLeft = length of round - time it took
                         //WORK OUT SCORE AND ROUND TO INT, STORE AS INT IN FILE
+
+                        int timeTaken = (CreatorLobby.roundLen / 2) - counter;
+                        double percTimeTaken = ((double) timeTaken) / (CreatorLobby.roundLen / 2);
+                        double percTimeLeft = 1 - percTimeTaken;
+                        double points = percTimeLeft * 1000;
+
+                        System.out.println(timeTaken);
+                        System.out.println(percTimeTaken);
+                        System.out.println(percTimeLeft);
+                        System.out.println(points);
                         
                         chatArea.append(output);
                         inputTxt.setEditable(false);

@@ -41,7 +41,7 @@ public class CreatorLobby {
             roundLenLbl.getHeight()
         );
 
-        roundLenTxt = new JTextField(5);
+        roundLenTxt = new JTextField("60", 5);
         roundLenTxt.setSize(50, 20);
         roundLenTxt.setHorizontalAlignment(JTextField.CENTER);
         roundLenTxt.setFont(roundLenTxt.getFont().deriveFont(Font.PLAIN, 14.0f));
@@ -66,7 +66,7 @@ public class CreatorLobby {
             roundNumLbl.getHeight()
         );
 
-        roundNumTxt = new JTextField(5);
+        roundNumTxt = new JTextField("2", 5);
         roundNumTxt.setSize(50, 20);
         roundNumTxt.setHorizontalAlignment(JTextField.CENTER);
         roundNumTxt.setFont(roundNumTxt.getFont().deriveFont(Font.PLAIN, 14.0f));
