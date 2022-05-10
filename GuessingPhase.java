@@ -126,7 +126,6 @@ public class GuessingPhase {
     }
 
     public String profanityFilter(String input) {
-
         try {
             BufferedReader in = new BufferedReader(new FileReader("censor.txt"));
             String str;
@@ -146,7 +145,8 @@ public class GuessingPhase {
             for (String x : words) {
                 for (String y : lines) {
                     if (x.toLowerCase().contains(y)) {
-                        tempWords[words.indexOf(x)] = tempWords[words.indexOf(x)].replace(y, new String(new char[y.length()]).replace("\0", "*"));
+                        tempWords[words.indexOf(x)] =
+                        tempWords[words.indexOf(x)].replace(y, new String(new char[y.length()]).replace("\0", "*"));
                     }
                 }
             }
