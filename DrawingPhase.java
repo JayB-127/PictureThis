@@ -54,7 +54,7 @@ public class DrawingPhase {
 
         //TODO: call word selection method
 
-        wordLbl = new JLabel("[draw this word]", JLabel.CENTER);
+        wordLbl = new JLabel("bee", JLabel.CENTER);
         wordLbl.setFont(wordLbl.getFont().deriveFont(35.0f));
         content.add(wordLbl, BorderLayout.SOUTH);
 
