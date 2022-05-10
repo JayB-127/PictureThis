@@ -63,6 +63,9 @@ public class DrawingPhase {
     }
 
     private String[] wordSelection(String file) {
+
+        //TODO: dgdb to determine difficulty
+        
         try {
             BufferedReader br = new BufferedReader(new FileReader("3player.csv"));
             String str;

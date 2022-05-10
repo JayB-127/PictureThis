@@ -2,7 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +20,11 @@ public class GuessingPhase {
     private JScrollPane scroll;
     private JLabel word1Img, word2Img, word3Img, timerLbl;
 
-    static Integer timeTaken = CreatorLobby.roundLen / 2; //max time taken, assumes players do not guess
+    static int timeTaken = CreatorLobby.roundLen / 2; //max time taken, assumes players do not guess
+    static int points = 0;
     
     private Timer timer;
-    private Integer counter = CreatorLobby.roundLen / 2;
+    private int counter = CreatorLobby.roundLen / 2;
     
     public void show() {
 
@@ -89,17 +93,44 @@ public class GuessingPhase {
                         output = Menu.username + " guessed correctly!\n";
                         //output sent to server to be displayed to all other players
 
-                        //TODO: scoring system
-                        //save time taken to guess
-                        //timeLeft = length of round - time it took
-                        //WORK OUT SCORE AND ROUND TO INT, STORE AS INT IN FILE
-
                         int timeTaken = (CreatorLobby.roundLen / 2) - counter;
                         double percTimeTaken = ((double) timeTaken) / (CreatorLobby.roundLen / 2);
                         double percTimeLeft = 1 - percTimeTaken;
-                        int points = (int) Math.round(percTimeLeft * 1000);
 
-                        //TODO: write points to file w username
+                        //deletes current line of old score
+                        File inputFile = new File("scores.txt");
+                        File tempFile = new File("tempScores.txt");
+
+                        try {
+                            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+                            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+                            String lineToRemove = Menu.username + " - " + points;
+                            String currentLine;
+
+                            while((currentLine = reader.readLine()) != null) {
+                                // trim newline when comparing with lineToRemove
+                                String trimmedLine = currentLine.trim();
+                                if(trimmedLine.equals(lineToRemove)) continue;
+                                writer.write(currentLine + System.getProperty("line.separator"));
+                            }
+                            writer.close();
+                            reader.close();
+                            inputFile.delete();
+                            tempFile.renameTo(new File("scores.txt"));
+                        } catch (Exception excep) {
+                            excep.printStackTrace();
+                        }
+
+                        //writes new line with new score
+                        points += (int) Math.round(percTimeLeft * 1000);
+                        try {
+                            BufferedWriter bw = new BufferedWriter(new FileWriter("scores.txt", true));
+                            bw.write(Menu.username + " - " + points);
+                            bw.close();
+                        } catch (Exception excep) {
+                            excep.printStackTrace();
+                        }
                         
                         chatArea.append(output);
                         inputTxt.setEditable(false);
@@ -247,6 +278,4 @@ public class GuessingPhase {
         timer.start();
 
     };
-
-    //TODO: dgdb
 }
