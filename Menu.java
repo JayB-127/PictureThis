@@ -133,7 +133,7 @@ public class Menu {
                 Boolean found = false;
 
                 try {
-                    FileReader freader = new FileReader("codes.txt");
+                    FileReader freader = new FileReader("Txt/codes.txt");
                     BufferedReader breader = new BufferedReader(freader);
 
                     String line = null;
@@ -193,5 +193,4 @@ public class Menu {
             "Guest"
         );
     }
-
 }
