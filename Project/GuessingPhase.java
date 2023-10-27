@@ -98,8 +98,8 @@ public class GuessingPhase {
                         double percTimeLeft = 1 - percTimeTaken;
 
                         //deletes current line of old score
-                        File inputFile = new File("./scores.txt");
-                        File tempFile = new File("./tempScores.txt");
+                        File inputFile = new File("Project/Txt/scores.txt");
+                        File tempFile = new File("Project/Txt/tempScores.txt");
 
                         try {
                             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
@@ -117,7 +117,7 @@ public class GuessingPhase {
                             writer.close();
                             reader.close();
                             inputFile.delete();
-                            tempFile.renameTo(new File("./scores.txt"));
+                            tempFile.renameTo(new File("Project/Txt/scores.txt"));
                         } catch (Exception excep) {
                             excep.printStackTrace();
                         }
@@ -125,7 +125,7 @@ public class GuessingPhase {
                         //writes new line with new score
                         points += (int) Math.round(percTimeLeft * 1000);
                         try {
-                            BufferedWriter bw = new BufferedWriter(new FileWriter("./scores.txt", true));
+                            BufferedWriter bw = new BufferedWriter(new FileWriter("Project/Txt/scores.txt", true));
                             bw.write(Menu.username + " - " + points);
                             bw.close();
                         } catch (Exception excep) {
@@ -166,7 +166,7 @@ public class GuessingPhase {
 
     public String profanityFilter(String input) {
         try {
-            BufferedReader in = new BufferedReader(new FileReader("./censor.txt"));
+            BufferedReader in = new BufferedReader(new FileReader("Project/Txt/censor.txt"));
             String str;
             List<String> lines = new ArrayList<String>();
             while((str = in.readLine()) != null) {
@@ -230,19 +230,19 @@ public class GuessingPhase {
         //server orders images according to word and sends to all clients
         //the words are then displayed by the clients, shown below
 
-        ImageIcon word1Icon = new ImageIcon(new ImageIcon("./word1.png").getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
+        ImageIcon word1Icon = new ImageIcon(new ImageIcon("Project/Drawings/word1.png").getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
         word1Img = new JLabel();
         word1Img.setIcon(word1Icon);
 
         pics.add(word1Img);
 
-        ImageIcon word2Icon = new ImageIcon(new ImageIcon("./word2.png").getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
+        ImageIcon word2Icon = new ImageIcon(new ImageIcon("Project/Drawings/word2.png").getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
         word2Img = new JLabel();
         word2Img.setIcon(word2Icon);
 
         pics.add(word2Img);
 
-        ImageIcon word3Icon = new ImageIcon(new ImageIcon("./word3.png").getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
+        ImageIcon word3Icon = new ImageIcon(new ImageIcon("Project/Drawings/word3.png").getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
         word3Img = new JLabel();
         word3Img.setIcon(word3Icon);
 

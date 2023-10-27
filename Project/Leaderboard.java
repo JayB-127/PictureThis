@@ -57,7 +57,7 @@ public class Leaderboard {
         leaderboard.append("Player - Score\n");
 
         try{
-            BufferedReader in = new BufferedReader(new FileReader("./scores.txt"));
+            BufferedReader in = new BufferedReader(new FileReader("Project/Txt/scores.txt"));
             String str;
             List<String[]> scores = new ArrayList<String[]>();
             while((str = in.readLine()) != null) {
