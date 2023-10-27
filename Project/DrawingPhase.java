@@ -39,7 +39,7 @@ public class DrawingPhase {
         JComponent tools = tools();
         content.add(tools, BorderLayout.LINE_START);
 
-        String[] words = wordSelection("Words/3player.csv");
+        String[] words = wordSelection("./3player.csv");
         finalWord = words[words.length-1].trim();
         //output other words to the other clients
 
@@ -67,7 +67,7 @@ public class DrawingPhase {
         dgdb(); //sets difficulty
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("Words/3player.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("./3player.csv"));
             String str;
             List<String[]> lines = new ArrayList<String[]>();
             while ((str = br.readLine()) != null) {
@@ -289,7 +289,7 @@ public class DrawingPhase {
         BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
         canvas.paint(image.getGraphics());
         try {
-            ImageIO.write(image, "png", new File("Drawings/word1.png"));
+            ImageIO.write(image, "png", new File("./word1.png"));
         } catch (IOException excep) {
             System.out.println(excep);
         }
@@ -298,7 +298,7 @@ public class DrawingPhase {
     public void dgdb() {
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("scores.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("./scores.txt"));
             String str;
             int sum = 0;
             while ((str = br.readLine()) != null) {

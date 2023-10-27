@@ -24,7 +24,6 @@ public class Menu {
     static String username;
     static int numPlayers = 3; //set as three for example
 
-
     public static void main(String[] args) {
         new Menu().show();
     }
@@ -133,7 +132,7 @@ public class Menu {
                 Boolean found = false;
 
                 try {
-                    FileReader freader = new FileReader("Txt/codes.txt");
+                    FileReader freader = new FileReader("./codes.txt");
                     BufferedReader breader = new BufferedReader(freader);
 
                     String line = null;
